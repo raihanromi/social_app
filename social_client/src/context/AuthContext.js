@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     "username": "gojo",
     "email": "gojo@gmail.com",
     "password": "$2b$10$m2/vXMZ.nfDvlkPNFuh/ZugkDkPkROws1v3m71YndMjwdz1tV6rD.",
-    "profilePicture": "",
+    "profilePicture": "person/2.jpeg",
     "coverPicture": "",
     "followers": [],
     "followings": [],
