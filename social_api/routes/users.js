@@ -55,6 +55,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+
 //get friends
 router.get("/friends/:userId", async (req, res) => {
   try {
@@ -69,12 +71,14 @@ router.get("/friends/:userId", async (req, res) => {
     friends.map((friend) => {
       const { _id, username, profilePicture } = friend;
       friendList.push({ _id, username, profilePicture });
-      res.send(friendList);
+      res.status(200).json(friendList);
     });
   } catch (error) {
     res.status(500).json(error);
   }
 });
+
+
 
 //follow a user
 router.put("/:id/follow", async (req, res) => {

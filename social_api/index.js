@@ -14,7 +14,7 @@ const path = require("path");
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
-  console.log("server is running");
+  console.log("DB connected");
 });
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
@@ -25,6 +25,7 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 
+//save file in the server and rename the file
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/images");
@@ -33,7 +34,6 @@ const storage = multer.diskStorage({
     cb(null, req.body.name);
   },
 });
-
 //uploading files
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
@@ -44,10 +44,12 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   }
 });
 
+//routes
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 
+
 app.listen(8800, () => {
-  console.log("Backend server is running!");
+  console.log("Server is running!!!");
 });
