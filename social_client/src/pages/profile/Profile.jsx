@@ -11,7 +11,6 @@ export default function Profile() {
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const username = useParams().username;
-  console.log(username);
 
   useEffect(() => {
     const fetchUser = async () => {
