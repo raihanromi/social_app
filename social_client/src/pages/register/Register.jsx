@@ -69,7 +69,7 @@ export default function Register() {
             />
             <button className="loginButton">Sign Up</button>
             <Link to="/login">
-              <button className="loginRegisterButton">Log into Account</button>
+              <button className="loginRegisterButton" style={{alignSelf:"center"}}>Log into Account</button>
             </Link>
           </form>
         </div>
