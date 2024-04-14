@@ -5,9 +5,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Topbar() {
-  const { user } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const { user, dispatch } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const handleClick = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
+  
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -54,6 +59,9 @@ export default function Topbar() {
             className="topbarImg"
           />
         </Link>
+        <span className="topbarLink" onClick={handleClick}>
+          Sign out
+        </span>
       </div>
     </div>
   );

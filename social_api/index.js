@@ -25,6 +25,7 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 
+
 //save file in the server and rename the file
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -36,6 +37,7 @@ const storage = multer.diskStorage({
 });
 //uploading files
 const upload = multer({ storage: storage });
+
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
     return res.status(200).json("file uploaded successfully");
