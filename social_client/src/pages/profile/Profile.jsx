@@ -18,11 +18,11 @@ export default function Profile() {
         `http://localhost:8800/api/users?username=${username}`
       );
       setUser(res.data);
-      console.log(user);
     };
     fetchUser();
   }, [username]);
 
+ 
   return (
     <>
       <Topbar />

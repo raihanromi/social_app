@@ -7,10 +7,13 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@mui/icons-material";
 
+
+
 export default function Rightbar({ user }) {
   const [friends, setFriends] = useState([]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
+  
 
   const [followed, setFollowed] = useState(false);
 
@@ -21,9 +24,10 @@ export default function Rightbar({ user }) {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get(
+        const friendList =   await axios.get(
           `http://localhost:8800/api/users/friends/${user._id}`
-        );
+        ) 
+
         setFriends(friendList.data);
       } catch (error) {
         console.log(error);
@@ -50,6 +54,7 @@ export default function Rightbar({ user }) {
     }
   };
 
+
   const HomeRightbar = () => {
     return (
       <>
@@ -59,7 +64,6 @@ export default function Rightbar({ user }) {
             <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
           </span>
         </div>
-        <img className="rightbarAd" src="assets/ad.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => (
